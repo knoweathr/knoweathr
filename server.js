@@ -1,5 +1,7 @@
 'use strict';
 
+console.log('server started');
+
 // Dependencies
 const express = require('express');
 const cors = require('cors');

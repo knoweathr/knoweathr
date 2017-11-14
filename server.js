@@ -5,6 +5,7 @@ console.log('server started');
 // Dependencies
 const express = require('express');
 const cors = require('cors');
+const pg = require('pg');
 const superagent = require('superagent');
 const fs = require('fs');
 const bodyParser = require('body-parser').urlencoded({extended: true});
@@ -71,7 +72,7 @@ function loadAirportsDB() {
     CREATE TABLE IF NOT EXISTS
     airports (
       id SERIAL,
-      airport_code PRIMARY KEY,
+      airport_code VARCHAR(4) PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
       code VARCHAR(3) NOT NULL,
       lat NUMERIC(8,4),
@@ -93,7 +94,7 @@ function loadWeatherDB() {
     CREATE TABLE IF NOT EXISTS
     weather (
       id SERIAL,
-      airport_code PRIMARY KEY,
+      airport_code VARCHAR(4) PRIMARY KEY,
       jan_temp_high INTEGER,
       jan_temp_low INTEGER,
       jan_chanceofsunnyday INTEGER,

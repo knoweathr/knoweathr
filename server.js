@@ -24,19 +24,51 @@ client.on('error', err => console.error(err));
 app.use(cors());
 
 // API Endpoints
-// Proxy route for handling Wunderground API requests
-
-app.get('/a37659bb7884be58/*', (req, res) => {
-  console.log(req.params[0]);
-  const url = `http://api.wunderground.com/api/${req.params[0]}`;
-  superagent(url)
-    // .set(`Authorization`, `token ${process.env.WUNDERGROUND_TOKEN}`)
-    // .then (success callback, fail callback)
-    .then (
-      results => res.send(results.text),
-      err => res.send(err)
-    )
+app.get('/fetchcontinent', (req, res) => {
+  console.log(req.query.continent);
+  client.query(`
+    SELECT airport_code FROM airports
+    WHERE continent='${req.query.continent}'
+    ;`
+  )
+  .then(result => res.send(result.rows))
+  .catch(console.error);
 });
+
+app.get('/fetchone', (req, res) => {
+    client.query(`
+      SELECT ${req.query.month}_temp_high FROM weather
+      WHERE airport_code='${req.query.airport_code}';
+      `)
+    .then (results => {
+      if (!results.rows[0][Object.keys(results.rows[0])[0]]) {
+        console.log('null: ' + results.rows[0][Object.keys(results.rows[0])[0]]);
+        // const url = `http://api.wunderground.com/api/${process.env.WUNDERGROUND_TOKEN}/planner_${req.query.month}/q/${req.query.airport_code}.json`;
+        // superagent(url)
+        // .then (api => console.log(api.body.trip.airport_code))
+      }
+      else res.send(results.rows[0]);
+    })
+    .catch (err => console.error(err));
+});
+
+
+// client.query(`
+//   UPDATE weather
+//   SET ${req.query.month}_temp_high =
+//   WHERE airport_code = ;
+// `)
+
+// app.post('/postToDB', bodyParser, (request, response) => {
+//   console.log(request.body);
+//   client.query(
+//     'INSERT INTO weather(airport_code, jan_temp_high, jan_temp_low, jan_chanceofsunnyday, jan_cloud_cover_cond) VALUES($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING',
+//     [request.body.author, request.body.authorUrl],
+//   )
+//     .then( () => response.sendStatus(201))
+//     .catch(console.error);
+// });
+
 
 loadAirportsDB();
 loadWeatherDB();
@@ -51,8 +83,6 @@ function loadJSON() {
     .then(result => {
       if(!parseInt(result.rows[0].count)) {
         fs.readFile(`airports.json`, (err, fd) => {
-          console.log(`${CLIENT_URL}/data/airports.json`);
-          console.log(err);
           JSON.parse(fd.toString()).forEach(ele => {
             client.query(`
             INSERT INTO
@@ -60,6 +90,27 @@ function loadJSON() {
             SELECT $1, $2, $3, $4, $5, $6, $7, $8, $9, $10
             `,
               [ele.airport_code, ele.name, ele.code, ele.lat, ele.lon, ele.city, ele.state, ele.country, ele.continent, ele.elev]
+            )
+              .catch(console.error);
+          })
+        })
+      }
+    })
+}
+
+function loadAirports() {
+  console.log('loadAirports');
+  client.query('SELECT COUNT(*) FROM weather')
+    .then(result => {
+      if(!parseInt(result.rows[0].count)) {
+        fs.readFile(`airports.json`, (err, fd) => {
+          JSON.parse(fd.toString()).forEach(ele => {
+            client.query(`
+            INSERT INTO
+            weather(airport_code)
+            SELECT $1
+            `,
+              [ele.airport_code]
             )
               .catch(console.error);
           })
@@ -147,6 +198,6 @@ function loadWeatherDB() {
       dec_cloud_cover_cond VARCHAR(255)
     );`
   )
-    .then()
+    .then(loadAirports)
     .catch(console.error)
 }

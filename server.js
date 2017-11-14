@@ -98,47 +98,47 @@ function loadWeatherDB() {
       jan_temp_high INTEGER,
       jan_temp_low INTEGER,
       jan_chanceofsunnyday INTEGER,
-      jan_cloud_cover_cond VARCHAR(255)
+      jan_cloud_cover_cond VARCHAR(255),
       feb_temp_high INTEGER,
       feb_temp_low INTEGER,
       feb_chanceofsunnyday INTEGER,
-      feb_cloud_cover_cond VARCHAR(255)
+      feb_cloud_cover_cond VARCHAR(255),
       mar_temp_high INTEGER,
       mar_temp_low INTEGER,
       mar_chanceofsunnyday INTEGER,
-      mar_cloud_cover_cond VARCHAR(255)
+      mar_cloud_cover_cond VARCHAR(255),
       apr_temp_high INTEGER,
       apr_temp_low INTEGER,
       apr_chanceofsunnyday INTEGER,
-      apr_cloud_cover_cond VARCHAR(255)
+      apr_cloud_cover_cond VARCHAR(255),
       may_temp_high INTEGER,
       may_temp_low INTEGER,
       may_chanceofsunnyday INTEGER,
-      may_cloud_cover_cond VARCHAR(255)
+      may_cloud_cover_cond VARCHAR(255),
       jun_temp_high INTEGER,
       jun_temp_low INTEGER,
       jun_chanceofsunnyday INTEGER,
-      jun_cloud_cover_cond VARCHAR(255)
+      jun_cloud_cover_cond VARCHAR(255),
       jul_temp_high INTEGER,
       jul_temp_low INTEGER,
       jul_chanceofsunnyday INTEGER,
-      jul_cloud_cover_cond VARCHAR(255)
+      jul_cloud_cover_cond VARCHAR(255),
       aug_temp_high INTEGER,
       aug_temp_low INTEGER,
       aug_chanceofsunnyday INTEGER,
-      aug_cloud_cover_cond VARCHAR(255)
+      aug_cloud_cover_cond VARCHAR(255),
       sep_temp_high INTEGER,
       sep_temp_low INTEGER,
       sep_chanceofsunnyday INTEGER,
-      sep_cloud_cover_cond VARCHAR(255)
+      sep_cloud_cover_cond VARCHAR(255),
       oct_temp_high INTEGER,
       oct_temp_low INTEGER,
       oct_chanceofsunnyday INTEGER,
-      oct_cloud_cover_cond VARCHAR(255)
+      oct_cloud_cover_cond VARCHAR(255),
       nov_temp_high INTEGER,
       nov_temp_low INTEGER,
       nov_chanceofsunnyday INTEGER,
-      nov_cloud_cover_cond VARCHAR(255)
+      nov_cloud_cover_cond VARCHAR(255),
       dec_temp_high INTEGER,
       dec_temp_low INTEGER,
       dec_chanceofsunnyday INTEGER,

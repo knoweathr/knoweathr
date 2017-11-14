@@ -58,7 +58,7 @@
     "name": "Tomas Guardia International Airport",
     "code": "LIR",
     "lat": "10.5922",
-    "lon": "-855439",
+    "lon": "-85.5439",
     "continent": "northamerica",
     "elev": "230"
   },
@@ -179,7 +179,6 @@
     "continent": "southamerica",
     "elev": "30"
   },
-  Adding Europe Hernandez
   {
     "airport_code": "LIRF",
     "name": "Leonardo da Vinci International Airport",
@@ -202,7 +201,7 @@
     "airport_code": "EGLL",
     "name": "London Heathrow Airport",
     "code": "LHR",
-    "lat": "-51.4703",
+    "lat": "51.4703",
     "lon": "-0.4534",
     "continent": "europe",
     "elev": "80"
@@ -270,8 +269,6 @@
     "continent": "europe",
     "elev": "179"
   },
-  Adding Asia Hernandez
-
   {
     "airport_code": "WADD",
     "name": "Bali International Airport",
@@ -362,97 +359,184 @@
     "continent": "asia",
     "elev": "134"
   },
-  Adding africa Hernandez
-  Adding Asia Hernandez
-
   {
-    "airport_code": "WADD",
-    "name": "Bali International Airport",
-    "code": "DPS",
-    "lat": "-8.7486",
-    "lon": "115.165",
-    "continent": "asia",
-    "elev": "14"
+    "airport_code": "FBSK",
+    "name": "Sir Seretse Khama International Airport",
+    "code": "GBE",
+    "lat": "-24.5558",
+    "lon": "25.9189",
+    "continent": "africa",
+    "elev": "3299"
   },
   {
-    "airport_code": "ZSPD",
-    "name": "Shanghai Pudong Airport",
-    "code": "PVG",
-    "lat": "31.1443",
-    "lon": "121.8083",
-    "continent": "asia",
-    "elev": "40"
+    "airport_code": "HKML",
+    "name": "Malindi Airport",
+    "code": "MYD",
+    "lat": "3.2231",
+    "lon": "-40.1003",
+    "continent": "africa",
+    "elev": "262"
   },
   {
-    "airport_code": "VTSP",
-    "name": "Phuket International Airport",
-    "code": "HKT",
-    "lat": "8.1106",
-    "lon": "98.3125",
-    "continent": "asia",
-    "elev": "69"
+    "airport_code": "FXMM",
+    "name": "Moshoeshoe I International Airport",
+    "code": "MSU",
+    "lat": "-29.4581",
+    "lon": "27.5556",
+    "continent": "africa",
+    "elev": "5105"
   },
   {
-    "airport_code": "RCKH",
-    "name": "Kaohsiung International Airport",
-    "code": "KHH",
-    "lat": "22.5698",
-    "lon": "120.345",
-    "continent": "asia",
-    "elev": "30"
+    "airport_code": "GMMN",
+    "name": "Mohamed V Airport",
+    "code": "CMN",
+    "lat": "33.365",
+    "lon": "-7.5817",
+    "continent": "africa",
+    "elev": "656"
   },
   {
-    "airport_code": "WSSS",
-    "name": "Singapore Changi Airport",
-    "code": "SIN",
-    "lat": "1.3644",
-    "lon": "103.9915",
-    "continent": "asia",
+    "airport_code": "HTZA",
+    "name": "Abeid Amani Karume International Airport",
+    "code": "ZNZ",
+    "lat": "-6.2186",
+    "lon": "39.2212",
+    "continent": "africa",
+    "elev": "52"
+  },
+  {
+    "airport_code": "HRYR",
+    "name": "Kigali Airport",
+    "code": "KGL",
+    "lat": "-1.9678",
+    "lon": "30.14",
+    "continent": "africa",
+    "elev": "4892"
+  },
+  {
+    "airport_code": "FAJS",
+    "name": "OR Tambo International Airport",
+    "code": "JNB",
+    "lat": "-26.1219",
+    "lon": "28.2467",
+    "continent": "africa",
+    "elev": "5512"
+  },
+  {
+    "airport_code": "FSIA",
+    "name": "Seychelles International Airport",
+    "code": "SEZ",
+    "lat": "-4.6711",
+    "lon": "55.5114",
+    "continent": "africa",
+    "elev": "10"
+  },
+  {
+    "airport_code": "HECA",
+    "name": "Cairo International Airport",
+    "code": "CAI",
+    "lat": "30.1124",
+    "lon": "31.4003",
+    "continent": "africa",
+    "elev": "381"
+  },
+  {
+    "airport_code": "DGAA",
+    "name": "Kotoka International Airport",
+    "code": "ACC",
+    "lat": "5.5964",
+    "lon": "-0.17",
+    "continent": "africa",
+    "elev": "205"
+  },
+  {
+    "airport_code": "YSSY",
+    "name": "Sydney Airport",
+    "code": "SYD",
+    "lat": "-33.93996",
+    "lon": "151.1753",
+    "continent": "australia",
+    "elev": "21"
+  },
+  {
+    "airport_code": "YBBN",
+    "name": "Brisbane Airport",
+    "code": "BNE",
+    "lat": "-27.3942",
+    "lon": "153.1218",
+    "continent": "australia",
+    "elev": "1"
+  },
+  {
+    "airport_code": "YPPH",
+    "name": "Perth Airport",
+    "code": "PER",
+    "lat": "-31.9385",
+    "lon": "115.9672",
+    "continent": "australia",
+    "elev": "66"
+  },
+  {
+    "airport_code": "YMHB",
+    "name": "Hobart International Airport",
+    "code": "HBA",
+    "lat": "-42.8375",
+    "lon": "147.506",
+    "continent": "australia",
+    "elev": "13"
+  },
+  {
+    "airport_code": "NZAA",
+    "name": "Auckland International Airport",
+    "code": "AKL",
+    "lat": "-37.0085",
+    "lon": "174.782",
+    "continent": "australia",
     "elev": "22"
   },
   {
-    "airport_code": "RJAA",
-    "name": "Narita International Airport",
-    "code": "NRT",
-    "lat": "35.7720",
-    "lon": "140.3929",
-    "continent": "asia",
-    "elev": "141"
+    "airport_code": "NZCH",
+    "name": "Christchurch International Airport",
+    "code": "CHC",
+    "lat": "-43.4859",
+    "lon": "172.534",
+    "continent": "australia",
+    "elev": "123"
   },
   {
-    "airport_code": "VOGO",
-    "name": "Goa International Airport",
-    "code": "GOI",
-    "lat": "15.3803",
-    "lon": "73.8350",
-    "continent": "asia",
-    "elev": "184"
+    "airport_code": "AYMD",
+    "name": "Madang Airport",
+    "code": "MAG",
+    "lat": "-5.21",
+    "lon": "145.787",
+    "continent": "australia",
+    "elev": "20"
   },
   {
-    "airport_code": "ZUBD",
-    "name": "Bangda Airport",
-    "code": "BPX",
-    "lat": "31.1442",
-    "lon": "97.174",
-    "continent": "asia",
-    "elev": "14219"
+    "airport_code": "WAAA",
+    "name": "Sultan Hasanuddin Airport",
+    "code": "UPG",
+    "lat": "-5.0777",
+    "lon": "119.5495",
+    "continent": "australia",
+    "elev": "47"
   },
   {
-    "airport_code": "UHPP",
-    "name": "Petropavlovsk-Kamchatsky Airport",
-    "code": "PKC",
-    "lat": "53.1694",
-    "lon": "158.4254",
-    "continent": "asia",
-    "elev": "140"
+    "airport_code": "YBTH",
+    "name": "Bathurst Airport",
+    "code": "BHS",
+    "lat": "-33.4121",
+    "lon": "149.657",
+    "continent": "australia",
+    "elev": "2434"
   },
   {
-    "airport_code": "LLBG",
-    "name": "Ben Gurion International Airport",
-    "code": "TLV",
-    "lat": "31.7719",
-    "lon": "35.217",
-    "continent": "asia",
-    "elev": "134"
-  },
+    "airport_code": "AYKY",
+    "name": "Lihir Island Airport",
+    "code": "LNV",
+    "lat": "-3.0667",
+    "lon": "152.617",
+    "continent": "australia",
+    "elev": "10"
+  }
 ]

@@ -1,0 +1,62 @@
+[
+  {
+    "airport_code": "KJFK",
+    "name": "John F Kennedy International Airport",
+    "code": "JFK",
+    "lat": "40.6437",
+    "lon": "-73.79",
+    "city": "Jamaica",
+    "state": "New York",
+    "country": "United States",
+    "continent": "North America",
+    "elev": "13"
+  },
+  {
+    "airport_code": "KLAX",
+    "name": "Los Angeles International Airport",
+    "code": "LAX",
+    "lat": "33.9456",
+    "lon": "-118.391",
+    "city": "Los Angeles",
+    "state": "California",
+    "country": "United States",
+    "continent": "North America",
+    "elev": "126"
+  },
+  {
+    "airport_code": "KMIA",
+    "name": "Miami International Airport",
+    "code": "MIA",
+    "lat": "25.7953",
+    "lon": "-80.2727",
+    "city": "Miami",
+    "state": "Florida",
+    "country": "United States",
+    "continent": "North America",
+    "elev": "11"
+  },
+  {
+    "airport_code": "MMMX",
+    "name": "Mexico City International Airport",
+    "code": "MEX",
+    "lat": "19.436",
+    "lon": "-99.082",
+    "city": "Ciudad de México",
+    "state": "Yucatan",
+    "country": "Mexico",
+    "continent": "North America",
+    "elev": "7343"
+  },
+  {
+    "airport_code": "KSEA",
+    "name": "Seattle-Tacoma International Airport",
+    "code": "SEA",
+    "lat": "47.450",
+    "lon": "-122.308",
+    "city": "Seattle",
+    "state": "Washington",
+    "country": "United States",
+    "continent": "North America",
+    "elev": "17"
+  }
+]

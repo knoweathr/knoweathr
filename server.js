@@ -50,7 +50,9 @@ function loadJSON() {
   client.query('SELECT COUNT(*) FROM airports')
     .then(result => {
       if(!parseInt(result.rows[0].count)) {
-        fs.readFile(`${CLIENT_URL}/data/airports.json`, (err, fd) => {
+        fs.readFile(`airports.json`, (err, fd) => {
+          console.log(`${CLIENT_URL}/data/airports.json`);
+          console.log(err);
           JSON.parse(fd.toString()).forEach(ele => {
             client.query(`
             INSERT INTO

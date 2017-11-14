@@ -179,4 +179,280 @@
     "continent": "southamerica",
     "elev": "30"
   },
+  Adding Europe Hernandez
+  {
+    "airport_code": "LIRF",
+    "name": "Leonardo da Vinci International Airport",
+    "code": "FCO",
+    "lat": "41.8026",
+    "lon": "12.2551",
+    "continent": "europe",
+    "elev": "14"
+  },
+  {
+    "airport_code": "LPPT",
+    "name": "Lisbon Airport",
+    "code": "LIS",
+    "lat": "38.7701",
+    "lon": "-9.1378",
+    "continent": "europe",
+    "elev": "374"
+  },
+  {
+    "airport_code": "EGLL",
+    "name": "London Heathrow Airport",
+    "code": "LHR",
+    "lat": "-51.4703",
+    "lon": "-0.4534",
+    "continent": "europe",
+    "elev": "80"
+  },
+  {
+    "airport_code": "LFPG",
+    "name": "Charles de Gaulle International Airport",
+    "code": "CDG",
+    "lat": "49.0175",
+    "lon": "2.5564",
+    "continent": "europe",
+    "elev": "387"
+  },
+  {
+    "airport_code": "LKTB",
+    "name": "Turany Airport",
+    "code": "BRQ",
+    "lat": "49.1535",
+    "lon": "16.6908",
+    "continent": "europe",
+    "elev": "778"
+  },
+  {
+    "airport_code": "LEBL",
+    "name": "Barcelona International Airport",
+    "code": "BCN",
+    "lat": "41.3006",
+    "lon": "2.0797",
+    "continent": "europe",
+    "elev": "15"
+  },
+  {
+    "airport_code": "LGMK",
+    "name": "Mykonos International Airport",
+    "code": "JMK",
+    "lat": "37.4340",
+    "lon": "25.3460",
+    "continent": "europe",
+    "elev": "1329"
+  },
+  {
+    "airport_code": "LTAI",
+    "name": "Antalya Airport",
+    "code": "AYT",
+    "lat": "36.9022",
+    "lon": "30.7917",
+    "continent": "europe",
+    "elev": "167"
+  },
+  {
+    "airport_code": "EKCH",
+    "name": "Copenhagen Airport",
+    "code": "CPH",
+    "lat": "55.6205",
+    "lon": "12.6495",
+    "continent": "europe",
+    "elev": "17"
+  },
+  {
+    "airport_code": "EFHK",
+    "name": "Helsinki Vantaa Airport",
+    "code": "HEL",
+    "lat": "60.3243",
+    "lon": "24.9688",
+    "continent": "europe",
+    "elev": "179"
+  },
+  Adding Asia Hernandez
+
+  {
+    "airport_code": "WADD",
+    "name": "Bali International Airport",
+    "code": "DPS",
+    "lat": "-8.7486",
+    "lon": "115.165",
+    "continent": "asia",
+    "elev": "14"
+  },
+  {
+    "airport_code": "ZSPD",
+    "name": "Shanghai Pudong Airport",
+    "code": "PVG",
+    "lat": "31.1443",
+    "lon": "121.8083",
+    "continent": "asia",
+    "elev": "40"
+  },
+  {
+    "airport_code": "VTSP",
+    "name": "Phuket International Airport",
+    "code": "HKT",
+    "lat": "8.1106",
+    "lon": "98.3125",
+    "continent": "asia",
+    "elev": "69"
+  },
+  {
+    "airport_code": "RCKH",
+    "name": "Kaohsiung International Airport",
+    "code": "KHH",
+    "lat": "22.5698",
+    "lon": "120.345",
+    "continent": "asia",
+    "elev": "30"
+  },
+  {
+    "airport_code": "WSSS",
+    "name": "Singapore Changi Airport",
+    "code": "SIN",
+    "lat": "1.3644",
+    "lon": "103.9915",
+    "continent": "asia",
+    "elev": "22"
+  },
+  {
+    "airport_code": "RJAA",
+    "name": "Narita International Airport",
+    "code": "NRT",
+    "lat": "35.7720",
+    "lon": "140.3929",
+    "continent": "asia",
+    "elev": "141"
+  },
+  {
+    "airport_code": "VOGO",
+    "name": "Goa International Airport",
+    "code": "GOI",
+    "lat": "15.3803",
+    "lon": "73.8350",
+    "continent": "asia",
+    "elev": "184"
+  },
+  {
+    "airport_code": "ZUBD",
+    "name": "Bangda Airport",
+    "code": "BPX",
+    "lat": "31.1442",
+    "lon": "97.174",
+    "continent": "asia",
+    "elev": "14219"
+  },
+  {
+    "airport_code": "UHPP",
+    "name": "Petropavlovsk-Kamchatsky Airport",
+    "code": "PKC",
+    "lat": "53.1694",
+    "lon": "158.4254",
+    "continent": "asia",
+    "elev": "140"
+  },
+  {
+    "airport_code": "LLBG",
+    "name": "Ben Gurion International Airport",
+    "code": "TLV",
+    "lat": "31.7719",
+    "lon": "35.217",
+    "continent": "asia",
+    "elev": "134"
+  },
+  Adding africa Hernandez
+  Adding Asia Hernandez
+
+  {
+    "airport_code": "WADD",
+    "name": "Bali International Airport",
+    "code": "DPS",
+    "lat": "-8.7486",
+    "lon": "115.165",
+    "continent": "asia",
+    "elev": "14"
+  },
+  {
+    "airport_code": "ZSPD",
+    "name": "Shanghai Pudong Airport",
+    "code": "PVG",
+    "lat": "31.1443",
+    "lon": "121.8083",
+    "continent": "asia",
+    "elev": "40"
+  },
+  {
+    "airport_code": "VTSP",
+    "name": "Phuket International Airport",
+    "code": "HKT",
+    "lat": "8.1106",
+    "lon": "98.3125",
+    "continent": "asia",
+    "elev": "69"
+  },
+  {
+    "airport_code": "RCKH",
+    "name": "Kaohsiung International Airport",
+    "code": "KHH",
+    "lat": "22.5698",
+    "lon": "120.345",
+    "continent": "asia",
+    "elev": "30"
+  },
+  {
+    "airport_code": "WSSS",
+    "name": "Singapore Changi Airport",
+    "code": "SIN",
+    "lat": "1.3644",
+    "lon": "103.9915",
+    "continent": "asia",
+    "elev": "22"
+  },
+  {
+    "airport_code": "RJAA",
+    "name": "Narita International Airport",
+    "code": "NRT",
+    "lat": "35.7720",
+    "lon": "140.3929",
+    "continent": "asia",
+    "elev": "141"
+  },
+  {
+    "airport_code": "VOGO",
+    "name": "Goa International Airport",
+    "code": "GOI",
+    "lat": "15.3803",
+    "lon": "73.8350",
+    "continent": "asia",
+    "elev": "184"
+  },
+  {
+    "airport_code": "ZUBD",
+    "name": "Bangda Airport",
+    "code": "BPX",
+    "lat": "31.1442",
+    "lon": "97.174",
+    "continent": "asia",
+    "elev": "14219"
+  },
+  {
+    "airport_code": "UHPP",
+    "name": "Petropavlovsk-Kamchatsky Airport",
+    "code": "PKC",
+    "lat": "53.1694",
+    "lon": "158.4254",
+    "continent": "asia",
+    "elev": "140"
+  },
+  {
+    "airport_code": "LLBG",
+    "name": "Ben Gurion International Airport",
+    "code": "TLV",
+    "lat": "31.7719",
+    "lon": "35.217",
+    "continent": "asia",
+    "elev": "134"
+  },
 ]

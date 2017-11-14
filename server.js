@@ -5,6 +5,7 @@ console.log('server started');
 // Dependencies
 const express = require('express');
 const cors = require('cors');
+const pg = require('pg');
 const superagent = require('superagent');
 const fs = require('fs');
 const bodyParser = require('body-parser').urlencoded({extended: true});
@@ -49,7 +50,9 @@ function loadJSON() {
   client.query('SELECT COUNT(*) FROM airports')
     .then(result => {
       if(!parseInt(result.rows[0].count)) {
-        fs.readFile(`${CLIENT_URL}/data/airports.json`, (err, fd) => {
+        fs.readFile(`airports.json`, (err, fd) => {
+          console.log(`${CLIENT_URL}/data/airports.json`);
+          console.log(err);
           JSON.parse(fd.toString()).forEach(ele => {
             client.query(`
             INSERT INTO
@@ -71,7 +74,7 @@ function loadAirportsDB() {
     CREATE TABLE IF NOT EXISTS
     airports (
       id SERIAL,
-      airport_code PRIMARY KEY,
+      airport_code VARCHAR(4) PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
       code VARCHAR(3) NOT NULL,
       lat NUMERIC(8,4),
@@ -93,51 +96,51 @@ function loadWeatherDB() {
     CREATE TABLE IF NOT EXISTS
     weather (
       id SERIAL,
-      airport_code PRIMARY KEY,
+      airport_code VARCHAR(4) PRIMARY KEY,
       jan_temp_high INTEGER,
       jan_temp_low INTEGER,
       jan_chanceofsunnyday INTEGER,
-      jan_cloud_cover_cond VARCHAR(255)
+      jan_cloud_cover_cond VARCHAR(255),
       feb_temp_high INTEGER,
       feb_temp_low INTEGER,
       feb_chanceofsunnyday INTEGER,
-      feb_cloud_cover_cond VARCHAR(255)
+      feb_cloud_cover_cond VARCHAR(255),
       mar_temp_high INTEGER,
       mar_temp_low INTEGER,
       mar_chanceofsunnyday INTEGER,
-      mar_cloud_cover_cond VARCHAR(255)
+      mar_cloud_cover_cond VARCHAR(255),
       apr_temp_high INTEGER,
       apr_temp_low INTEGER,
       apr_chanceofsunnyday INTEGER,
-      apr_cloud_cover_cond VARCHAR(255)
+      apr_cloud_cover_cond VARCHAR(255),
       may_temp_high INTEGER,
       may_temp_low INTEGER,
       may_chanceofsunnyday INTEGER,
-      may_cloud_cover_cond VARCHAR(255)
+      may_cloud_cover_cond VARCHAR(255),
       jun_temp_high INTEGER,
       jun_temp_low INTEGER,
       jun_chanceofsunnyday INTEGER,
-      jun_cloud_cover_cond VARCHAR(255)
+      jun_cloud_cover_cond VARCHAR(255),
       jul_temp_high INTEGER,
       jul_temp_low INTEGER,
       jul_chanceofsunnyday INTEGER,
-      jul_cloud_cover_cond VARCHAR(255)
+      jul_cloud_cover_cond VARCHAR(255),
       aug_temp_high INTEGER,
       aug_temp_low INTEGER,
       aug_chanceofsunnyday INTEGER,
-      aug_cloud_cover_cond VARCHAR(255)
+      aug_cloud_cover_cond VARCHAR(255),
       sep_temp_high INTEGER,
       sep_temp_low INTEGER,
       sep_chanceofsunnyday INTEGER,
-      sep_cloud_cover_cond VARCHAR(255)
+      sep_cloud_cover_cond VARCHAR(255),
       oct_temp_high INTEGER,
       oct_temp_low INTEGER,
       oct_chanceofsunnyday INTEGER,
-      oct_cloud_cover_cond VARCHAR(255)
+      oct_cloud_cover_cond VARCHAR(255),
       nov_temp_high INTEGER,
       nov_temp_low INTEGER,
       nov_chanceofsunnyday INTEGER,
-      nov_cloud_cover_cond VARCHAR(255)
+      nov_cloud_cover_cond VARCHAR(255),
       dec_temp_high INTEGER,
       dec_temp_low INTEGER,
       dec_chanceofsunnyday INTEGER,

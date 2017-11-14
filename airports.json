@@ -5,10 +5,7 @@
     "code": "JFK",
     "lat": "40.6437",
     "lon": "-73.79",
-    "city": "Jamaica",
-    "state": "New York",
-    "country": "United States",
-    "continent": "North America",
+    "continent": "northamerica",
     "elev": "13"
   },
   {
@@ -17,10 +14,7 @@
     "code": "LAX",
     "lat": "33.9456",
     "lon": "-118.391",
-    "city": "Los Angeles",
-    "state": "California",
-    "country": "United States",
-    "continent": "North America",
+    "continent": "northamerica",
     "elev": "126"
   },
   {
@@ -29,10 +23,7 @@
     "code": "MIA",
     "lat": "25.7953",
     "lon": "-80.2727",
-    "city": "Miami",
-    "state": "Florida",
-    "country": "United States",
-    "continent": "North America",
+    "continent": "northamerica",
     "elev": "11"
   },
   {
@@ -41,10 +32,7 @@
     "code": "MEX",
     "lat": "19.436",
     "lon": "-99.082",
-    "city": "Ciudad de México",
-    "state": "Yucatan",
-    "country": "Mexico",
-    "continent": "North America",
+    "continent": "northamerica",
     "elev": "7343"
   },
   {
@@ -53,10 +41,142 @@
     "code": "SEA",
     "lat": "47.450",
     "lon": "-122.308",
-    "city": "Seattle",
-    "state": "Washington",
-    "country": "United States",
-    "continent": "North America",
+    "continent": "northamerica",
     "elev": "17"
-  }
+  },
+  {
+    "airport_code": "TJBQ",
+    "name": "Rafael Hernandez Airport",
+    "code": "BQN",
+    "lat": "18.496",
+    "lon": "-67.1357",
+    "continent": "northamerica",
+    "elev": "237"
+  },
+  {
+    "airport_code": "MRLB",
+    "name": "Tomas Guardia International Airport",
+    "code": "LIR",
+    "lat": "10.5922",
+    "lon": "-855439",
+    "continent": "northamerica",
+    "elev": "230"
+  },
+  {
+    "airport_code": "CYYT",
+    "name": "St Johns International Airport",
+    "code": "YYT",
+    "lat": "47.6212",
+    "lon": "-52.7424",
+    "continent": "northamerica",
+    "elev": "461"
+  },
+  {
+    "airport_code": "MMSL",
+    "name": "Los Cabos Mexico International Airport",
+    "code": "MSL",
+    "lat": "22.9460",
+    "lon": "-109.9363",
+    "continent": "northamerica",
+    "elev": "690"
+  },
+  {
+    "airport_code": "TNCM",
+    "name": "Princess Juliana International Airport",
+    "code": "SXM",
+    "lat": "18.0731",
+    "lon": "-63.0822",
+    "continent": "northamerica",
+    "elev": "14"
+  },
+  {
+    "airport_code": "SPZO",
+    "name": "Velazco Astete Airport",
+    "code": "CUZ",
+    "lat": "-13.5308",
+    "lon": "-71.9472",
+    "continent": "southamerica",
+    "elev": "10656"
+  },
+  {
+    "airport_code": "SECU",
+    "name": "Mariscal Lamar Airport",
+    "code": "CUE",
+    "lat": "-2.8867",
+    "lon": "-78.9833",
+    "continent": "southamerica",
+    "elev": "8302"
+  },
+  {
+    "airport_code": "SEGU",
+    "name": "Simon Bolivar International Airport",
+    "code": "GYE",
+    "lat": "-2.1533",
+    "lon": "-79.8833",
+    "continent": "southamerica",
+    "elev": "15"
+  },
+  {
+    "airport_code": "SCFA",
+    "name": "Cerro Moreno International Airport",
+    "code": "ANF",
+    "lat": "-23.44",
+    "lon": "-70.4419",
+    "continent": "southamerica",
+    "elev": "460"
+  },
+  {
+    "airport_code": "SLLP",
+    "name": "El Alto International Airport",
+    "code": "LPB",
+    "lat": "-16.5094",
+    "lon": "-68.1906",
+    "continent": "southamerica",
+    "elev": "13313"
+  },
+  {
+    "airport_code": "SCAR",
+    "name": "Chacalluta Airport",
+    "code": "ARI",
+    "lat": "-18.3458",
+    "lon": "-70.3358",
+    "continent": "southamerica",
+    "elev": "180"
+  },
+  {
+    "airport_code": "SEGS",
+    "name": "Seymour Airport",
+    "code": "GPS",
+    "lat": "-0.45",
+    "lon": "-90.2625",
+    "continent": "southamerica",
+    "elev": "52"
+  },
+  {
+    "airport_code": "SCIP",
+    "name": "Mataveri International Airport",
+    "code": "IPC",
+    "lat": "-27.1167",
+    "lon": "-109.367",
+    "continent": "southamerica",
+    "elev": "226"
+  },
+  {
+    "airport_code": "SBFL",
+    "name": "Hercilio Luz International Airport",
+    "code": "FLN",
+    "lat": "-27.6697",
+    "lon": "-48.5517",
+    "continent": "southamerica",
+    "elev": "20"
+  },
+  {
+    "airport_code": "SBGL",
+    "name": "Rio de Janeiro-Antonio Carlos Jobim International",
+    "code": "GIG",
+    "lat": "-22.8094",
+    "lon": "-43.25",
+    "continent": "southamerica",
+    "elev": "30"
+  },
 ]

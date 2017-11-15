@@ -31,21 +31,34 @@ app.get('/fetchcontinent', (req, res) => {
     WHERE continent='${req.query.continent}'
     ;`
   )
-  .then(result => res.send(result.rows))
-  .catch(console.error);
+    .then(result => res.send(result.rows))
+    .catch(console.error);
 });
 
 app.get('/fetchone', (req, res) => {
-    client.query(`
+  client.query(`
       SELECT ${req.query.month}_temp_high FROM weather
       WHERE airport_code='${req.query.airport_code}';
       `)
     .then (results => {
       if (!results.rows[0][Object.keys(results.rows[0])[0]]) {
-        console.log('null: ' + results.rows[0][Object.keys(results.rows[0])[0]]);
-        // const url = `http://api.wunderground.com/api/${process.env.WUNDERGROUND_TOKEN}/planner_${req.query.month}/q/${req.query.airport_code}.json`;
-        // superagent(url)
-        // .then (api => console.log(api.body.trip.airport_code))
+        const url = `http://api.wunderground.com/api/${process.env.WUNDERGROUND_TOKEN}/planner_${req.query.monthnumbers}/q/${req.query.airport_code}.json`;
+        superagent(url)
+          .then (api => {
+            // console.log('temp high: ' + api.body.trip.temp_high.avg.F);
+
+            client.query(`
+              UPDATE weather
+              SET ${req.query.month}_temp_high = '${api.body.trip.temp_high.avg.F}',
+              ${req.query.month}_temp_low = '${api.body.trip.temp_low.avg.F}',
+              ${req.query.month}_chanceofsunnyday = '${api.body.trip.chance_of.chanceofsunnycloudyday.percentage}',
+              ${req.query.month}_cloud_cover_cond = '${api.body.trip.cloud_cover.cond}'
+              WHERE airport_code = '${api.body.trip.airport_code}';
+            `)
+              .then (res.send(api.body.trip.temp_high.avg.F))
+              .catch(err => console.error(err));
+          })
+          .catch (err => console.error(err));
       }
       else res.send(results.rows[0]);
     })
@@ -148,53 +161,53 @@ function loadWeatherDB() {
     weather (
       id SERIAL,
       airport_code VARCHAR(4) PRIMARY KEY,
-      jan_temp_high INTEGER,
-      jan_temp_low INTEGER,
-      jan_chanceofsunnyday INTEGER,
+      jan_temp_high VARCHAR(3),
+      jan_temp_low VARCHAR(3),
+      jan_chanceofsunnyday VARCHAR(3),
       jan_cloud_cover_cond VARCHAR(255),
-      feb_temp_high INTEGER,
-      feb_temp_low INTEGER,
-      feb_chanceofsunnyday INTEGER,
+      feb_temp_high VARCHAR(3),
+      feb_temp_low VARCHAR(3),
+      feb_chanceofsunnyday VARCHAR(3),
       feb_cloud_cover_cond VARCHAR(255),
-      mar_temp_high INTEGER,
-      mar_temp_low INTEGER,
-      mar_chanceofsunnyday INTEGER,
+      mar_temp_high VARCHAR(3),
+      mar_temp_low VARCHAR(3),
+      mar_chanceofsunnyday VARCHAR(3),
       mar_cloud_cover_cond VARCHAR(255),
-      apr_temp_high INTEGER,
-      apr_temp_low INTEGER,
-      apr_chanceofsunnyday INTEGER,
+      apr_temp_high VARCHAR(3),
+      apr_temp_low VARCHAR(3),
+      apr_chanceofsunnyday VARCHAR(3),
       apr_cloud_cover_cond VARCHAR(255),
-      may_temp_high INTEGER,
-      may_temp_low INTEGER,
-      may_chanceofsunnyday INTEGER,
+      may_temp_high VARCHAR(3),
+      may_temp_low VARCHAR(3),
+      may_chanceofsunnyday VARCHAR(3),
       may_cloud_cover_cond VARCHAR(255),
-      jun_temp_high INTEGER,
-      jun_temp_low INTEGER,
-      jun_chanceofsunnyday INTEGER,
+      jun_temp_high VARCHAR(3),
+      jun_temp_low VARCHAR(3),
+      jun_chanceofsunnyday VARCHAR(3),
       jun_cloud_cover_cond VARCHAR(255),
-      jul_temp_high INTEGER,
-      jul_temp_low INTEGER,
-      jul_chanceofsunnyday INTEGER,
+      jul_temp_high VARCHAR(3),
+      jul_temp_low VARCHAR(3),
+      jul_chanceofsunnyday VARCHAR(3),
       jul_cloud_cover_cond VARCHAR(255),
-      aug_temp_high INTEGER,
-      aug_temp_low INTEGER,
-      aug_chanceofsunnyday INTEGER,
+      aug_temp_high VARCHAR(3),
+      aug_temp_low VARCHAR(3),
+      aug_chanceofsunnyday VARCHAR(3),
       aug_cloud_cover_cond VARCHAR(255),
-      sep_temp_high INTEGER,
-      sep_temp_low INTEGER,
-      sep_chanceofsunnyday INTEGER,
+      sep_temp_high VARCHAR(3),
+      sep_temp_low VARCHAR(3),
+      sep_chanceofsunnyday VARCHAR(3),
       sep_cloud_cover_cond VARCHAR(255),
-      oct_temp_high INTEGER,
-      oct_temp_low INTEGER,
-      oct_chanceofsunnyday INTEGER,
+      oct_temp_high VARCHAR(3),
+      oct_temp_low VARCHAR(3),
+      oct_chanceofsunnyday VARCHAR(3),
       oct_cloud_cover_cond VARCHAR(255),
-      nov_temp_high INTEGER,
-      nov_temp_low INTEGER,
-      nov_chanceofsunnyday INTEGER,
+      nov_temp_high VARCHAR(3),
+      nov_temp_low VARCHAR(3),
+      nov_chanceofsunnyday VARCHAR(3),
       nov_cloud_cover_cond VARCHAR(255),
-      dec_temp_high INTEGER,
-      dec_temp_low INTEGER,
-      dec_chanceofsunnyday INTEGER,
+      dec_temp_high VARCHAR(3),
+      dec_temp_low VARCHAR(3),
+      dec_chanceofsunnyday VARCHAR(3),
       dec_cloud_cover_cond VARCHAR(255)
     );`
   )

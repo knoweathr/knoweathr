@@ -531,12 +531,12 @@
     "elev": "2434"
   },
   {
-    "airport_code": "AYKY",
-    "name": "Lihir Island Airport",
-    "code": "LNV",
-    "lat": "-3.0667",
-    "lon": "152.617",
+    "airport_code": "RPLL",
+    "name": "Ninoy Aquino International Airport",
+    "code": "MNL",
+    "lat": "14.5123",
+    "lon": "121.0165",
     "continent": "australia",
-    "elev": "10"
+    "elev": "75"
   }
 ]

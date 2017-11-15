@@ -8,7 +8,7 @@ const cors = require('cors');
 const pg = require('pg');
 const superagent = require('superagent');
 const fs = require('fs');
-const bodyParser = require('body-parser').urlencoded({extended: true});
+const bodyParser =  require('body-parser').urlencoded({extended: true}); //eslint-disable-line
 
 // App Setup
 const app = express();
@@ -31,7 +31,7 @@ app.get('/fetchcontinent', (req, res) => {
     ;`
   )
     .then(result => res.send(result.rows))
-    .catch(console.error);
+    .catch(err => console.error(err));
 });
 
 app.get('/fetchone', (req, res) => {
@@ -70,14 +70,27 @@ app.get('/getfilteredinfo', (req, res) => {
     ;`
   )
     .then(result => res.send(result.rows))
-    .catch(console.error);
+    .catch(err => console.error(err));
 });
 
+app.get('/login', (req, res) => {
+  client.query(`
+    SELECT username, password, favorites FROM users WHERE username=${req.query.username}`)
+    .then(result => {
+      console.log(result);
+      if (!result.rows[0][Object.keys(result.rows[0])[0]]){
+        console.log()
+      } else {
+        res.send(result.rows[0])
+      }
+    })
+    .catch(err => console.error(err))
+});
 
 loadAirportsDB();
 loadWeatherDB();
 
-app.get('/*', (req, res) => res.redirect(CLIENT_URL));
+app.get('*', (req, res) => res.redirect(CLIENT_URL));
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}!`));
 
@@ -95,7 +108,7 @@ function loadJSON() {
             `,
               [ele.airport_code, ele.name, ele.code, ele.lat, ele.lon, ele.continent, ele.elev]
             )
-              .catch(console.error);
+              .catch(err => console.error(err));
           })
         })
       }
@@ -116,7 +129,7 @@ function loadAirports() {
             `,
               [ele.airport_code]
             )
-              .catch(console.error);
+              .catch(err => console.error(err));
           })
         })
       }
@@ -139,7 +152,7 @@ function loadAirportsDB() {
     );`
   )
     .then(loadJSON)
-    .catch(console.error)
+    .catch(err => console.error(err))
 }
 
 function loadWeatherDB() {
@@ -200,5 +213,5 @@ function loadWeatherDB() {
     );`
   )
     .then(loadAirports)
-    .catch(console.error)
+    .catch(err => console.error(err))
 }

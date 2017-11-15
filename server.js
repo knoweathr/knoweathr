@@ -62,6 +62,18 @@ app.get('/fetchone', (req, res) => {
     .catch (err => console.error(err));
 });
 
+app.get('/getfilteredinfo', (req, res) => {
+  client.query(`
+    SELECT airports.airport_code, name, code, lat, lon, elev, ${req.query.month}_temp_high, ${req.query.month}_temp_low, ${req.query.month}_chanceofsunnyday, ${req.query.month}_cloud_cover_cond FROM airports
+    JOIN weather ON airports.airport_code = weather.airport_code
+    WHERE airports.airport_code='${req.query.airport_code}'
+    ;`
+  )
+    .then(result => res.send(result.rows))
+    .catch(console.error);
+});
+
+
 loadAirportsDB();
 loadWeatherDB();
 

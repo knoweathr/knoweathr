@@ -122,9 +122,6 @@ function loadAirportsDB() {
       code VARCHAR(3) NOT NULL,
       lat NUMERIC(8,4),
       lon NUMERIC(8,4),
-      city VARCHAR(255) NOT NULL,
-      state VARCHAR(255) NOT NULL,
-      country VARCHAR(255) NOT NULL,
       continent VARCHAR(255) NOT NULL,
       elev INTEGER
     );`

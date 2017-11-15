@@ -333,13 +333,13 @@
     "elev": "184"
   },
   {
-    "airport_code": "ZUBD",
-    "name": "Bangda Airport",
-    "code": "BPX",
-    "lat": "31.1442",
-    "lon": "97.174",
+    "airport_code": "RKSI",
+    "name": "Incheon International Airport",
+    "code": "ICN",
+    "lat": "37.4633",
+    "lon": "126.44",
     "continent": "asia",
-    "elev": "14219"
+    "elev": "23"
   },
   {
     "airport_code": "UHPP",

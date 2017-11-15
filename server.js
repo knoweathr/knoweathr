@@ -5,6 +5,7 @@ console.log('server started');
 // Dependencies
 const express = require('express');
 const cors = require('cors');
+const pg = require('pg');
 const superagent = require('superagent');
 const fs = require('fs');
 const bodyParser = require('body-parser').urlencoded({extended: true});
@@ -23,19 +24,64 @@ client.on('error', err => console.error(err));
 app.use(cors());
 
 // API Endpoints
-// Proxy route for handling Wunderground API requests
-
-app.get('/a37659bb7884be58/*', (req, res) => {
-  console.log(req.params[0]);
-  const url = `http://api.wunderground.com/api/${req.params[0]}`;
-  superagent(url)
-    // .set(`Authorization`, `token ${process.env.WUNDERGROUND_TOKEN}`)
-    // .then (success callback, fail callback)
-    .then (
-      results => res.send(results.text),
-      err => res.send(err)
-    )
+app.get('/fetchcontinent', (req, res) => {
+  console.log(req.query.continent);
+  client.query(`
+    SELECT airport_code FROM airports
+    WHERE continent='${req.query.continent}'
+    ;`
+  )
+    .then(result => res.send(result.rows))
+    .catch(console.error);
 });
+
+app.get('/fetchone', (req, res) => {
+  client.query(`
+      SELECT ${req.query.month}_temp_high FROM weather
+      WHERE airport_code='${req.query.airport_code}';
+      `)
+    .then (results => {
+      if (!results.rows[0][Object.keys(results.rows[0])[0]]) {
+        const url = `http://api.wunderground.com/api/${process.env.WUNDERGROUND_TOKEN}/planner_${req.query.monthnumbers}/q/${req.query.airport_code}.json`;
+        superagent(url)
+          .then (api => {
+            // console.log('temp high: ' + api.body.trip.temp_high.avg.F);
+
+            client.query(`
+              UPDATE weather
+              SET ${req.query.month}_temp_high = '${api.body.trip.temp_high.avg.F}',
+              ${req.query.month}_temp_low = '${api.body.trip.temp_low.avg.F}',
+              ${req.query.month}_chanceofsunnyday = '${api.body.trip.chance_of.chanceofsunnycloudyday.percentage}',
+              ${req.query.month}_cloud_cover_cond = '${api.body.trip.cloud_cover.cond}'
+              WHERE airport_code = '${api.body.trip.airport_code}';
+            `)
+              .then (res.send(api.body.trip.temp_high.avg.F))
+              .catch(err => console.error(err));
+          })
+          .catch (err => console.error(err));
+      }
+      else res.send(results.rows[0]);
+    })
+    .catch (err => console.error(err));
+});
+
+
+// client.query(`
+//   UPDATE weather
+//   SET ${req.query.month}_temp_high =
+//   WHERE airport_code = ;
+// `)
+
+// app.post('/postToDB', bodyParser, (request, response) => {
+//   console.log(request.body);
+//   client.query(
+//     'INSERT INTO weather(airport_code, jan_temp_high, jan_temp_low, jan_chanceofsunnyday, jan_cloud_cover_cond) VALUES($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING',
+//     [request.body.author, request.body.authorUrl],
+//   )
+//     .then( () => response.sendStatus(201))
+//     .catch(console.error);
+// });
+
 
 loadAirportsDB();
 loadWeatherDB();
@@ -49,7 +95,7 @@ function loadJSON() {
   client.query('SELECT COUNT(*) FROM airports')
     .then(result => {
       if(!parseInt(result.rows[0].count)) {
-        fs.readFile(`${CLIENT_URL}/data/airports.json`, (err, fd) => {
+        fs.readFile(`airports.json`, (err, fd) => {
           JSON.parse(fd.toString()).forEach(ele => {
             client.query(`
             INSERT INTO
@@ -65,13 +111,34 @@ function loadJSON() {
     })
 }
 
+function loadAirports() {
+  console.log('loadAirports');
+  client.query('SELECT COUNT(*) FROM weather')
+    .then(result => {
+      if(!parseInt(result.rows[0].count)) {
+        fs.readFile(`airports.json`, (err, fd) => {
+          JSON.parse(fd.toString()).forEach(ele => {
+            client.query(`
+            INSERT INTO
+            weather(airport_code)
+            SELECT $1
+            `,
+              [ele.airport_code]
+            )
+              .catch(console.error);
+          })
+        })
+      }
+    })
+}
+
 function loadAirportsDB() {
   console.log('loadAirportsDB');
   client.query(`
     CREATE TABLE IF NOT EXISTS
     airports (
       id SERIAL,
-      airport_code PRIMARY KEY,
+      airport_code VARCHAR(4) PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
       code VARCHAR(3) NOT NULL,
       lat NUMERIC(8,4),
@@ -93,57 +160,57 @@ function loadWeatherDB() {
     CREATE TABLE IF NOT EXISTS
     weather (
       id SERIAL,
-      airport_code PRIMARY KEY,
-      jan_temp_high INTEGER,
-      jan_temp_low INTEGER,
-      jan_chanceofsunnyday INTEGER,
-      jan_cloud_cover_cond VARCHAR(255)
-      feb_temp_high INTEGER,
-      feb_temp_low INTEGER,
-      feb_chanceofsunnyday INTEGER,
-      feb_cloud_cover_cond VARCHAR(255)
-      mar_temp_high INTEGER,
-      mar_temp_low INTEGER,
-      mar_chanceofsunnyday INTEGER,
-      mar_cloud_cover_cond VARCHAR(255)
-      apr_temp_high INTEGER,
-      apr_temp_low INTEGER,
-      apr_chanceofsunnyday INTEGER,
-      apr_cloud_cover_cond VARCHAR(255)
-      may_temp_high INTEGER,
-      may_temp_low INTEGER,
-      may_chanceofsunnyday INTEGER,
-      may_cloud_cover_cond VARCHAR(255)
-      jun_temp_high INTEGER,
-      jun_temp_low INTEGER,
-      jun_chanceofsunnyday INTEGER,
-      jun_cloud_cover_cond VARCHAR(255)
-      jul_temp_high INTEGER,
-      jul_temp_low INTEGER,
-      jul_chanceofsunnyday INTEGER,
-      jul_cloud_cover_cond VARCHAR(255)
-      aug_temp_high INTEGER,
-      aug_temp_low INTEGER,
-      aug_chanceofsunnyday INTEGER,
-      aug_cloud_cover_cond VARCHAR(255)
-      sep_temp_high INTEGER,
-      sep_temp_low INTEGER,
-      sep_chanceofsunnyday INTEGER,
-      sep_cloud_cover_cond VARCHAR(255)
-      oct_temp_high INTEGER,
-      oct_temp_low INTEGER,
-      oct_chanceofsunnyday INTEGER,
-      oct_cloud_cover_cond VARCHAR(255)
-      nov_temp_high INTEGER,
-      nov_temp_low INTEGER,
-      nov_chanceofsunnyday INTEGER,
-      nov_cloud_cover_cond VARCHAR(255)
-      dec_temp_high INTEGER,
-      dec_temp_low INTEGER,
-      dec_chanceofsunnyday INTEGER,
+      airport_code VARCHAR(4) PRIMARY KEY,
+      jan_temp_high VARCHAR(3),
+      jan_temp_low VARCHAR(3),
+      jan_chanceofsunnyday VARCHAR(3),
+      jan_cloud_cover_cond VARCHAR(255),
+      feb_temp_high VARCHAR(3),
+      feb_temp_low VARCHAR(3),
+      feb_chanceofsunnyday VARCHAR(3),
+      feb_cloud_cover_cond VARCHAR(255),
+      mar_temp_high VARCHAR(3),
+      mar_temp_low VARCHAR(3),
+      mar_chanceofsunnyday VARCHAR(3),
+      mar_cloud_cover_cond VARCHAR(255),
+      apr_temp_high VARCHAR(3),
+      apr_temp_low VARCHAR(3),
+      apr_chanceofsunnyday VARCHAR(3),
+      apr_cloud_cover_cond VARCHAR(255),
+      may_temp_high VARCHAR(3),
+      may_temp_low VARCHAR(3),
+      may_chanceofsunnyday VARCHAR(3),
+      may_cloud_cover_cond VARCHAR(255),
+      jun_temp_high VARCHAR(3),
+      jun_temp_low VARCHAR(3),
+      jun_chanceofsunnyday VARCHAR(3),
+      jun_cloud_cover_cond VARCHAR(255),
+      jul_temp_high VARCHAR(3),
+      jul_temp_low VARCHAR(3),
+      jul_chanceofsunnyday VARCHAR(3),
+      jul_cloud_cover_cond VARCHAR(255),
+      aug_temp_high VARCHAR(3),
+      aug_temp_low VARCHAR(3),
+      aug_chanceofsunnyday VARCHAR(3),
+      aug_cloud_cover_cond VARCHAR(255),
+      sep_temp_high VARCHAR(3),
+      sep_temp_low VARCHAR(3),
+      sep_chanceofsunnyday VARCHAR(3),
+      sep_cloud_cover_cond VARCHAR(255),
+      oct_temp_high VARCHAR(3),
+      oct_temp_low VARCHAR(3),
+      oct_chanceofsunnyday VARCHAR(3),
+      oct_cloud_cover_cond VARCHAR(255),
+      nov_temp_high VARCHAR(3),
+      nov_temp_low VARCHAR(3),
+      nov_chanceofsunnyday VARCHAR(3),
+      nov_cloud_cover_cond VARCHAR(255),
+      dec_temp_high VARCHAR(3),
+      dec_temp_low VARCHAR(3),
+      dec_chanceofsunnyday VARCHAR(3),
       dec_cloud_cover_cond VARCHAR(255)
     );`
   )
-    .then()
+    .then(loadAirports)
     .catch(console.error)
 }

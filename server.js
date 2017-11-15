@@ -25,7 +25,6 @@ app.use(cors());
 
 // API Endpoints
 app.get('/fetchcontinent', (req, res) => {
-  console.log(req.query.continent);
   client.query(`
     SELECT airport_code FROM airports
     WHERE continent='${req.query.continent}'
@@ -45,8 +44,6 @@ app.get('/fetchone', (req, res) => {
         const url = `http://api.wunderground.com/api/${process.env.WUNDERGROUND_TOKEN}/planner_${req.query.monthnumbers}/q/${req.query.airport_code}.json`;
         superagent(url)
           .then (api => {
-            // console.log('temp high: ' + api.body.trip.temp_high.avg.F);
-
             client.query(`
               UPDATE weather
               SET ${req.query.month}_temp_high = '${api.body.trip.temp_high.avg.F}',
@@ -55,7 +52,7 @@ app.get('/fetchone', (req, res) => {
               ${req.query.month}_cloud_cover_cond = '${api.body.trip.cloud_cover.cond}'
               WHERE airport_code = '${api.body.trip.airport_code}';
             `)
-              .then (res.send(api.body.trip.temp_high.avg.F))
+              .then (res.send({'key': api.body.trip.temp_high.avg.F}))
               .catch(err => console.error(err));
           })
           .catch (err => console.error(err));
@@ -64,24 +61,6 @@ app.get('/fetchone', (req, res) => {
     })
     .catch (err => console.error(err));
 });
-
-
-// client.query(`
-//   UPDATE weather
-//   SET ${req.query.month}_temp_high =
-//   WHERE airport_code = ;
-// `)
-
-// app.post('/postToDB', bodyParser, (request, response) => {
-//   console.log(request.body);
-//   client.query(
-//     'INSERT INTO weather(airport_code, jan_temp_high, jan_temp_low, jan_chanceofsunnyday, jan_cloud_cover_cond) VALUES($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING',
-//     [request.body.author, request.body.authorUrl],
-//   )
-//     .then( () => response.sendStatus(201))
-//     .catch(console.error);
-// });
-
 
 loadAirportsDB();
 loadWeatherDB();
@@ -99,10 +78,10 @@ function loadJSON() {
           JSON.parse(fd.toString()).forEach(ele => {
             client.query(`
             INSERT INTO
-            airports(airport_code, name, code, lat, lon, city, state, country, continent, elev)
-            SELECT $1, $2, $3, $4, $5, $6, $7, $8, $9, $10
+            airports(airport_code, name, code, lat, lon, continent, elev)
+            SELECT $1, $2, $3, $4, $5, $6, $7
             `,
-              [ele.airport_code, ele.name, ele.code, ele.lat, ele.lon, ele.city, ele.state, ele.country, ele.continent, ele.elev]
+              [ele.airport_code, ele.name, ele.code, ele.lat, ele.lon, ele.continent, ele.elev]
             )
               .catch(console.error);
           })

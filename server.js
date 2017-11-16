@@ -75,16 +75,26 @@ app.get('/getfilteredinfo', (req, res) => {
 
 app.get('/login', (req, res) => {
   client.query(`
-    SELECT username, password, favorites FROM users WHERE username=${req.query.username}`)
-    .then(result => {
-      console.log(result);
-      if (!result.rows[0][Object.keys(result.rows[0])[0]]){
-        console.log()
-      } else {
-        res.send(result.rows[0])
-      }
-    })
-    .catch(err => console.error(err))
+    INSERT INTO users (username, password) VALUES ('${req.query.username}', '${req.query.password}')`)
+    .then( () =>
+      res.send(null)
+    )
+    .catch(
+      client.query(`
+        SELECT username, password, favorites FROM users WHERE username='${req.query.username}'`)
+        .then(result => {
+          if (result.rows[0].password === `${req.query.password}`){
+            if (result.rows[0].favorites === null){
+              res.send(null)
+            } else {
+              res.send(result.rows[0].favorites)
+            }
+          } else {
+            res.send('error')
+          }
+        })
+        .catch(err => console.error(err))
+    )
 });
 
 loadAirportsDB();

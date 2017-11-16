@@ -144,13 +144,13 @@
     "elev": "180"
   },
   {
-    "airport_code": "SEGS",
-    "name": "Seymour Airport",
-    "code": "GPS",
-    "lat": "-0.45",
-    "lon": "-90.2625",
+    "airport_code": "SVMI",
+    "name": "SSimón Bolívar International Airport",
+    "code": "CCS",
+    "lat": "10.5989",
+    "lon": "-67.0040",
     "continent": "southamerica",
-    "elev": "52"
+    "elev": "235"
   },
   {
     "airport_code": "SCIP",
@@ -372,8 +372,8 @@
     "airport_code": "HKML",
     "name": "Malindi Airport",
     "code": "MYD",
-    "lat": "3.2231",
-    "lon": "-40.1003",
+    "lat": "-3.2231",
+    "lon": "40.1003",
     "continent": "africa",
     "elev": "262"
   },
@@ -414,13 +414,13 @@
     "elev": "4892"
   },
   {
-    "airport_code": "FAJS",
-    "name": "OR Tambo International Airport",
-    "code": "JNB",
-    "lat": "-26.1219",
-    "lon": "28.2467",
+    "airport_code": "FMMI",
+    "name": "Ivato International Airport",
+    "code": "TNR",
+    "lat": "-18.7958",
+    "lon": "47.4761",
     "continent": "africa",
-    "elev": "5512"
+    "elev": "4168"
   },
   {
     "airport_code": "FSIA",
@@ -522,13 +522,13 @@
     "elev": "47"
   },
   {
-    "airport_code": "YBTH",
-    "name": "Bathurst Airport",
-    "code": "BHS",
-    "lat": "-33.4121",
-    "lon": "149.657",
+    "airport_code": "YPDN",
+    "name": "Darwin International Airport",
+    "code": "DRW",
+    "lat": "-12.4112",
+    "lon": "130.8775",
     "continent": "australia",
-    "elev": "2434"
+    "elev": "102"
   },
   {
     "airport_code": "RPLL",

@@ -84,7 +84,7 @@ app.get('/login', (req, res) => {
         SELECT username, password, favorites FROM users WHERE username='${req.query.username}'`)
         .then(result => {
           if (result.rows[0].password === `${req.query.password}`){
-            if (result.rows[0].favorites === null){
+            if (result.rows[0].favorites === ''){
               res.send('none')
             } else {
               res.send(result.rows[0].favorites)
@@ -96,6 +96,35 @@ app.get('/login', (req, res) => {
         .catch(err => console.error(err))
     )
 });
+
+app.get('/getfavorites', (req, res) => {
+  client.query(`
+    SELECT username, password, favorites FROM users
+    WHERE username='${req.query.username}'
+    AND password='${req.query.password}'`)
+    .then(result => {
+      console.log(result.rows[0]);
+      if (result.rows.length === 0) {
+        res.send('error')
+      } else {
+        if (result.rows[0].favorites === ''){
+          res.send('empty')
+        } else {
+          res.send(result.rows[0].favorites)
+        }
+      }
+    })
+    .catch(err => console.error(err))
+})
+
+app.put('/updatefavorites', bodyParser, (req, res) => { //eslint-disable-line
+  client.query(`
+    UPDATE users
+    SET favorites='${req.body.favorites}'
+    WHERE username='${req.body.username}'`)
+    .then(() => console.log(req.body))
+    .catch(err => console.error(err))
+})
 
 loadAirportsDB();
 loadWeatherDB();

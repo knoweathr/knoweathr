@@ -372,8 +372,8 @@
     "airport_code": "HKML",
     "name": "Malindi Airport",
     "code": "MYD",
-    "lat": "3.2231",
-    "lon": "-40.1003",
+    "lat": "-3.2231",
+    "lon": "40.1003",
     "continent": "africa",
     "elev": "262"
   },

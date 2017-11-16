@@ -77,7 +77,7 @@ app.get('/login', (req, res) => {
   client.query(`
     INSERT INTO users (username, password) VALUES ('${req.query.username}', '${req.query.password}')`)
     .then( () =>
-      res.send(null)
+      res.send('none')
     )
     .catch(
       client.query(`
@@ -85,7 +85,7 @@ app.get('/login', (req, res) => {
         .then(result => {
           if (result.rows[0].password === `${req.query.password}`){
             if (result.rows[0].favorites === null){
-              res.send(null)
+              res.send('none')
             } else {
               res.send(result.rows[0].favorites)
             }

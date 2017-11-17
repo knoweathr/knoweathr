@@ -103,7 +103,6 @@ app.get('/getfavorites', (req, res) => {
     WHERE username='${req.query.username}'
     AND password='${req.query.password}'`)
     .then(result => {
-      console.log(result.rows[0]);
       if (result.rows.length === 0) {
         res.send('error')
       } else {

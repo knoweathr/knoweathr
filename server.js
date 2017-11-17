@@ -107,7 +107,7 @@ app.get('/getfavorites', (req, res) => {
       if (result.rows.length === 0) {
         res.send('error')
       } else {
-        if (result.rows[0].favorites === ''){
+        if (!result.rows[0].favorites){
           res.send('empty')
         } else {
           res.send(result.rows[0].favorites)

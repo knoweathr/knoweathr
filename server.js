@@ -122,7 +122,7 @@ app.put('/updatefavorites', bodyParser, (req, res) => { //eslint-disable-line
     UPDATE users
     SET favorites='${req.body.favorites}'
     WHERE username='${req.body.username}'`)
-    .then(() => console.log(req.body))
+    .then(() => console.log('success'))
     .catch(err => console.error(err))
 })
 
